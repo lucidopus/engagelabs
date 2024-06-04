@@ -5,11 +5,7 @@ import { Button } from "@/components";
 import { ENGAGELABS_API_BASE, ENGAGELABS_API_KEY } from "@/config";
 import { useState } from "react";
 
-interface PlaygroundProps {
-  session?: string | null;
-}
-
-const Playground: React.FC<PlaygroundProps> = ({ session }) => {
+function Playground() {
   const [persona, setPersona] = useState("");
   const [qualities, setQualities] = useState("");
 
@@ -92,5 +88,6 @@ const Playground: React.FC<PlaygroundProps> = ({ session }) => {
       </motion.div>
     </div>
   );
-};
+}
+
 export default Playground;
