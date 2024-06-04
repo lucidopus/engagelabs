@@ -1,13 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components";
-import { ENGAGELABS_API_BASE, ENGAGELABS_API_KEY } from "@/config";
 import { useState } from "react";
+import Link from "next/link";
+
+import { ENGAGELABS_API_BASE, ENGAGELABS_API_KEY } from "@/config";
+import { Button } from "@/components";
 
 function Playground() {
   const [persona, setPersona] = useState("");
   const [qualities, setQualities] = useState("");
+  const [data, setData] = useState(null);
 
   const getData = async () => {
     try {
@@ -27,7 +30,9 @@ function Playground() {
       );
 
       const data = await response.json();
+
       console.log(data);
+      setData(data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -78,11 +83,22 @@ function Playground() {
             onChange={(e) => setQualities(e.target.value)}
           ></textarea>
           <div>
-            <Button
-              width="w-full"
-              name="Initiate AI Conversation"
-              onclick={handleClick}
-            />
+            {data ? (
+              <div className="flex justify-center">
+                <Link
+                  href={`/playground/${data}`}
+                  className="inline-block w-1/2 text-center rounded-full px-3.5 py-2.5 text-lg font-bold text-black bg-green-300 hover:shadow-[0_0_20px_5px_rgba(85,152,191,0.5)] transition-all duration-500"
+                >
+                  Let's Talk!
+                </Link>
+              </div>
+            ) : (
+              <Button
+                name="Initiate AI Conversation"
+                onclick={handleClick}
+                width="w-full"
+              />
+            )}
           </div>
         </div>
       </motion.div>
