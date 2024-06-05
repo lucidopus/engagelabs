@@ -101,33 +101,35 @@ function Playground() {
           ></textarea>
           <div>
             {data ? (
-              <div className="flex justify-center space-x-6">
-                <button
-                  onClick={handleReinitialize}
-                  className="inline-flex items-center justify-center w-1/2 text-center rounded-full px-3.5 py-2.5 text-lg font-bold text-black bg-orange-300 hover:shadow-[0_0_20px_5px_rgba(85,152,191,0.5)] transition-all duration-500"
-                >
-                  <span className="mr-2">Try again</span>
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
+              <div>
+                <div className="flex justify-center space-x-6">
+                  <button
+                    onClick={handleReinitialize}
+                    className="inline-flex items-center justify-center w-1/2 text-center rounded-md px-3.5 py-2.5 text-lg font-bold text-black bg-white hover:bg-red-200 transition-all duration-500"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                    />
-                  </svg>
-                </button>
-                <button
-                  onClick={() => (window.location.href = `/playground/${data}`)}
-                  className="inline-block w-1/2 text-center rounded-full px-3.5 py-2.5 text-lg font-bold text-black bg-green-300 hover:shadow-[0_0_20px_5px_rgba(85,152,191,0.5)] transition-all duration-500"
-                >
-                  Let's Talk!
-                </button>
+                    <span className="mr-2 flex">
+                      Reset <pre> </pre>
+                      <img
+                        src="/reset.svg"
+                        alt=""
+                        height={25}
+                        width={25}
+                        className="p-1"
+                      />
+                    </span>
+                  </button>
+                  <button
+                    onClick={() =>
+                      (window.location.href = `/playground/${data}`)
+                    }
+                    className="inline-flex w-1/2 text-center rounded-lg px-3.5 py-2.5 text-lg font-bold text-black bg-gradient-to-r bg-white hover:bg-white transition-all duration-300 hover:shadow-[0_0_30px_10px_rgba(230,230,230,0.5)]"
+                  >
+                    <span className="flex justify-center">
+                      <pre className="mt-1 mr-2"> Launch</pre>
+                      <img src="/ringing.gif" alt="" width={35} height={35} />
+                    </span>
+                  </button>
+                </div>
               </div>
             ) : (
               <Button
