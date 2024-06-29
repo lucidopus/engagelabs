@@ -3,9 +3,9 @@ import { Input, Button } from "@/components";
 function Login() {
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8 my-11">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <h1 className="text-center text-4xl font-extrabold dark:text-gray-300">
+          <h1 className="text-center text-4xl font-extrabold dark:text-gray-300 text-gray-100">
             Welcome Back!
           </h1>
           <h2 className="mt-6 text-center text-xl font-bold leading-9 tracking-tight bg-gradient-to-r from-cyan-600 to-blue-600 text-transparent bg-clip-text">
@@ -18,14 +18,14 @@ function Login() {
             <form className="space-y-6" action="#" method="POST">
               <Input
                 id="email"
-                label="Email address"
+                label="Email address*"
                 placeholder="johndoe@example.com"
                 type="email"
               />
 
               <Input
                 id="password"
-                label="Password"
+                label="Password*"
                 type="password"
                 placeholder="Enter your password"
               />
@@ -40,7 +40,7 @@ function Login() {
                   />
                   <label
                     htmlFor="remember-me"
-                    className="ml-3 block text-sm leading-6"
+                    className="ml-3 block text-sm leading-6 text-gray-100"
                   >
                     Remember me
                   </label>
@@ -80,7 +80,7 @@ function Login() {
                   className="flex w-full items-center justify-center gap-3 rounded-md border border-gray-500 px-3 py-1.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D9BF0]"
                 >
                   <img src="/google.svg" alt="Google" height={20} width={20} />
-                  <span className="text-sm font-semibold leading-6 ">
+                  <span className="text-sm font-semibold leading-6 text-gray-100">
                     Google
                   </span>
                 </a>
@@ -88,7 +88,7 @@ function Login() {
             </div>
           </div>
 
-          <p className="mt-10 text-center text-sm dark:text-gray-300 text-gray-900">
+          <p className="mt-10 text-center text-sm dark:text-gray-300 text-gray-100">
             New to EngageLabs?{" "}
             <a
               href="/authenticate/signup"

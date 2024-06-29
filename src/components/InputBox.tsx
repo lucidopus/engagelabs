@@ -13,7 +13,10 @@ const Input = ({
 }) => {
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-medium leading-6">
+      <label
+        htmlFor={id}
+        className="block text-sm font-medium leading-6 text-gray-300"
+      >
         {label}
       </label>
       <div className="mt-2">
@@ -24,7 +27,7 @@ const Input = ({
           placeholder={placeholder}
           autoComplete="email"
           required
-          className="bg-transparent block p-3 w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-200 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+          className="bg-transparent block p-3 w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-200 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 text-white"
         />
       </div>
     </div>

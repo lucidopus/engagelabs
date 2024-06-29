@@ -4,12 +4,12 @@ import { Button } from "@/components";
 function Signup() {
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8 my-11">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <h1 className="text-center text-4xl font-extrabold bg-gradient-to-r from-cyan-600 to-blue-600 text-transparent bg-clip-text">
             Sign up
           </h1>
-          <h2 className="mt-5 text-center text-lg font-semibold leading-9 tracking-tight">
+          <h2 className="mt-5 text-center text-lg font-semibold leading-9 tracking-tight text-gray-100">
             Enjoy 5 free credits on us!
           </h2>
         </div>
@@ -19,21 +19,21 @@ function Signup() {
             <form className="space-y-6" action="#" method="POST">
               <Input
                 id="email"
-                label="Email address"
+                label="Email address*"
                 placeholder="johndoe@example.com"
                 type="email"
               />
 
               <Input
                 id="password"
-                label="Password"
+                label="Password*"
                 type="password"
                 placeholder="Enter a password"
               />
 
               <Input
                 id="password"
-                label="Confirm Password"
+                label="Confirm Password*"
                 type="password"
                 placeholder="Confirm your password"
               />
@@ -62,7 +62,7 @@ function Signup() {
                   className="flex w-full items-center justify-center gap-3 rounded-md border border-gray-500 px-3 py-1.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D9BF0]"
                 >
                   <img src="/google.svg" alt="Google" height={20} width={20} />
-                  <span className="text-sm font-semibold leading-6 ">
+                  <span className="text-sm font-semibold leading-6 text-gray-100">
                     Sign up with Google
                   </span>
                 </a>
@@ -70,7 +70,7 @@ function Signup() {
             </div>
           </div>
 
-          <p className="mt-4 text-center text-sm dark:text-gray-300 text-gray-900">
+          <p className="mt-4 text-center text-sm text-gray-300 dark:text-gray-900">
             Already have an account?{" "}
             <a
               href="/authenticate/login"
