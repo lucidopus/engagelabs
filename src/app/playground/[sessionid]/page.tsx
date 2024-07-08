@@ -75,7 +75,6 @@ export default function SessionDetail({
 
           <div className="bottom-20 mb-10 w-full overflow-hidden bg-black rounded-t-3xl">
             <Recorder uploadAudio={uploadAudio} />
-            <div>{/* Voice Synthesizer - output the Assistant's voice */}</div>
           </div>
         </form>
       </main>

@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { Message } from "@/app/playground/[sessionid]/page";
 import { SalespersonChat, UserChat } from "./ChatMessages";
+import LoadingMessage from "./LoadingMessage";
 
 interface Props {
   messages: Message[];
@@ -19,6 +20,8 @@ export default function Messages({ messages }: Props) {
         messages.length > 0 ? "pb-96" : "pb-32"
       }`}
     >
+      <LoadingMessage />
+
       {!messages.length && (
         <div className="flex flex-col space-y-10 flex-1 items-center justify-end">
           <p className="text-white-500 text-xl animate-pulse">
