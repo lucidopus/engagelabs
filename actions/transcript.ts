@@ -8,13 +8,16 @@ const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY,
 });
 
+const API_BASE = process.env.DEEPGRAM_API_BASE || '';
+const API_KEY = process.env.DEEPGRAM_API_KEY || '';
+
 async function transcript(prevState: any, formData: FormData) {
   const file = formData.get("audio") as File;
   const url = process.env.NEXT_PUBLIC_ENGAGELABS_API_BASE?.concat(PROSPECT_MESSAGE_ENDPOINT) || "";
   const api_key = process.env.NEXT_PUBLIC_ENGAGELABS_API_KEY || "";
 
   if (url === "" || api_key === "") {
-    alert("There was an issue with the EngageLabs API credentials!")
+    throw new Error("There was an issue with the EngageLabs API credentials!");
   }
 
   if (file.size === 0) {
@@ -47,14 +50,31 @@ async function transcript(prevState: any, formData: FormData) {
       },
     });  
 
+    // Text-to-speech conversion
+    const ttsResponse = await axios.post(
+      API_BASE,
+      { text: prospect_message.data.response },
+      {
+        headers: {
+          'Authorization': `Token ${API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        responseType: 'arraybuffer',
+      }
+    );
+
+    const audioBuffer = Buffer.from(ttsResponse.data);
+    const audioBase64 = audioBuffer.toString('base64');
+
     return {
       sender: speechResult.text,
       response: prospect_message.data.response,
       id: prevState.id,
+      audioData: audioBase64,
     };
   } catch (error) {
     console.log("Error running the pipeline: ", error);
-    
+    throw error;
   }
 }
 
