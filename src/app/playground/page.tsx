@@ -120,10 +120,10 @@ function Playground() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <h1 className="text-center text-4xl pb-2 font-extrabold dark:text-gray-300 text-gray-300">
+      <h1 className="text-center text-4xl pb-8 font-extrabold dark:text-gray-300 text-gray-300">
         EngageLabs API Playground
       </h1>
-      <h2 className="text-center text-xl pb-5 font-bold leading-9 tracking-tight bg-gradient-to-r from-cyan-600 to-blue-600 text-transparent bg-clip-text">
+      <h2 className="text-center text-xl pb-16 font-bold leading-9 tracking-tight bg-gradient-to-r from-cyan-600 to-blue-600 text-transparent bg-clip-text">
         Try it out!
       </h2>
       <motion.div
@@ -141,12 +141,13 @@ function Playground() {
             <span className="font-light text-gray-200">*</span>
           </label>
           <textarea
-            className={`bg-transparent text-white block p-3 w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-200 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 ${
+            className={`bg-transparent text-white block p-3 w-full rounded-md border-0 py-3 shadow-sm ring-1 ring-inset ring-gray-200 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 ${
               data !== null ? "cursor-not-allowed" : ""
             }`}
             id="help"
             placeholder="Ex. The Price Conscious Buyer"
             rows={1}
+            
             required
             value={persona}
             onChange={(p) => setPersona(p.target.value)}
@@ -161,7 +162,7 @@ function Playground() {
             <span className="font-light text-gray-200">*</span>
           </label>
           <textarea
-            className={`bg-transparent block p-3 w-full rounded-md border-0 py-1.5 shadow-sm text-white ring-1 ring-inset ring-gray-200 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 ${
+            className={`bg-transparent block p-3 w-full rounded-md border-0 py-3 shadow-sm text-white ring-1 ring-inset ring-gray-200 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 ${
               data !== null ? "cursor-not-allowed" : ""
             }`}
             id="help"
@@ -172,6 +173,7 @@ function Playground() {
             onChange={(e) => setQualities(e.target.value)}
             disabled={data !== null}
           ></textarea>
+          {/*
           <label className="block text-sm font-medium" htmlFor="dragndrop">
             <div className="flex justify-between items-center text-gray-300">
               <span>
@@ -190,7 +192,7 @@ function Playground() {
               </Tooltip>
             </div>
           </label>
-          <form
+           <form
             id="dragndrop"
             className={`${
               dragActive
@@ -248,7 +250,7 @@ function Playground() {
                 </div>
               ))}
             </div>
-          </form>
+          </form> */}
           <div>
             {data ? (
               <div>

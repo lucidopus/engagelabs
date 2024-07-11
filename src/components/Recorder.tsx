@@ -97,7 +97,7 @@ export default function Recorder({
 
       {permission && recordingStatus === "inactive" && !pending && (
         <Image
-          src={"/noactive.png"}
+          src={"/mute.gif"}
           width={100}
           height={100}
           onClick={startRecording}

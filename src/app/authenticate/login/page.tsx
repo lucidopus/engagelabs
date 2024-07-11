@@ -3,9 +3,9 @@ import { Input, Button } from "@/components";
 function Login() {
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8 my-11">
-        <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <h1 className="text-center text-4xl font-extrabold dark:text-gray-300 text-gray-100">
+      <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8 bg-black">
+        <div className="sm:mx-auto sm:w-full sm:max-w-md my-10">
+          <h1 className="text-center my-10 text-4xl font-extrabold dark:text-gray-300 text-gray-100">
             Welcome Back!
           </h1>
           <h2 className="mt-6 text-center text-xl font-bold leading-9 tracking-tight bg-gradient-to-r from-cyan-600 to-blue-600 text-transparent bg-clip-text">

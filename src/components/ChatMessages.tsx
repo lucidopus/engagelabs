@@ -6,7 +6,7 @@ export const SalespersonChat = ({ message }: { message: string }) => {
       <div className="flex items-end ">
         <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start shadow-lg shadow-gray-500/10">
           <div>
-            <span className="px-5 py-2 font-medium rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600 text-sm">
+            <span className="px-5 py-2 font-semibold rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600 text-base shadow-2xl">
               {message}
             </span>
           </div>
@@ -27,7 +27,7 @@ export const UserChat = ({ message }: { message: string }) => {
       <div className="flex items-end justify-end">
         <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end shadow-lg shadow-gray-500/10">
           <div>
-            <span className="px-5 py-2 font-medium rounded-lg inline-block rounded-br-none bg-gradient-to-r from-blue-600 to-violet-600 text-white text-sm">
+            <span className="px-5 py-2 font-semibold rounded-lg inline-block shadow-2xl rounded-br-none bg-gradient-to-br from-cyan-500 to-cyan-900 text-white text-base">
               {message}
             </span>
           </div>

@@ -4,9 +4,9 @@ import { Button } from "@/components";
 function Signup() {
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8 my-11">
-        <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <h1 className="text-center text-4xl font-extrabold bg-gradient-to-r from-cyan-600 to-blue-600 text-transparent bg-clip-text">
+      <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
+        <div className="sm:mx-auto sm:w-full sm:max-w-md my-12">
+          <h1 className="text-center my-10 text-4xl font-extrabold bg-gradient-to-r from-cyan-600 to-blue-600 text-transparent bg-clip-text">
             Sign up
           </h1>
           <h2 className="mt-5 text-center text-lg font-semibold leading-9 tracking-tight text-gray-100">
@@ -14,7 +14,7 @@ function Signup() {
           </h2>
         </div>
 
-        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-[480px]">
+        <div className="sm:mx-auto sm:w-full sm:max-w-[480px]">
           <div className="border border-gray-400 dark:border-gray-400 px-6 py-12 shadow sm:rounded-lg sm:px-12">
             <form className="space-y-6" action="#" method="POST">
               <Input

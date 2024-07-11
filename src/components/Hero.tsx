@@ -129,7 +129,7 @@ export default function Hero() {
                       </motion.span>
                     ))}
                   </motion.span>
-                  <span className="text-8xl text-gray-300">
+                  <span className="text-8xl text-gray-200">
                     {" "}
                     Your Sales Team's Performance
                   </span>
@@ -147,12 +147,12 @@ export default function Hero() {
                   </motion.span>
                 </motion.h1>
                 <motion.p
-                  className="mt-6 text-xl leading-8 text-gray-600 sm:max-w-md lg:max-w-none dark:text-gray-400 tracking-normal"
+                  className="mt-6 text-xl leading-8 text-gray-300 sm:max-w-md lg:max-w-none dark:text-gray-400 tracking-normal"
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
                 >
-                  EngageLabs AI is an advanced AI system designed to train
+                  EngageLabs is an advanced AI system designed to train
                   salespeople by simulating customer calls with customizable
                   personas and qualities.
                 </motion.p>

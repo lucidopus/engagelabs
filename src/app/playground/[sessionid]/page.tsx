@@ -76,9 +76,9 @@ export default function SessionDetail({
   };
 
   return (
-    <main className="relative text-gray-50 bg-purple-500 h-screen overflow-hidden">
+    <main className="relative text-gray-50 bg-cyan-500 h-screen overflow-hidden">
       <form action={formAction} className="flex flex-col bg-black h-full">
-        <div className="flex-1 bg-gradient-to-b from-purple-500 to-black overflow-hidden">
+        <div className="flex-1 bg-gradient-to-b from-cyan-900 to-black overflow-hidden">
           <Messages messages={messages}/>
         </div>
 
