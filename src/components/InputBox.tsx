@@ -5,11 +5,21 @@ const Input = ({
   type,
   label,
   placeholder,
+  autoComplete,
+  required,
+  value,
+  onChange,
+  className,
 }: {
   id: string;
   type: string;
   label: string;
   placeholder?: string;
+  autoComplete?: string;
+  required?: boolean | false;
+  value?: string | "";
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  className?: string;
 }) => {
   return (
     <div>
@@ -25,9 +35,11 @@ const Input = ({
           name={id}
           type={type}
           placeholder={placeholder}
-          autoComplete="email"
-          required
-          className="bg-transparent block p-3 w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-200 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 text-white"
+          autoComplete={autoComplete}
+          required={required}
+          value={value}
+          onChange={onChange}
+          className={`bg-transparent block p-3 w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-200 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 text-white ${className}`}
         />
       </div>
     </div>

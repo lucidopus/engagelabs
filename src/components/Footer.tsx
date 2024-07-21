@@ -12,7 +12,7 @@ import {
   COMPANY_NAME,
   COMPANY_URL,
   PRODUCTS,
-  description,
+  footer_description,
 } from "@/config";
 
 const navigation = {
@@ -64,7 +64,7 @@ function Footer() {
               {APP_NAME}
             </Link>
             <p className="mb-8 text-base text-gray-400 dark:text-gray-400">
-              {description}
+              {footer_description}
             </p>
           </div>
           <div className="mt-16 grid text-gray-400 grid-cols-2 gap-16 xl:col-span-2 xl:mt-0">

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Noto_Sans } from "next/font/google";
+import { Montserrat } from "next/font/google";
 
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components";
 
-const inter = Noto_Sans({ subsets: ["latin"], weight: "400" });
+const inter = Montserrat({ subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
   title: "EngageLabs",
@@ -20,9 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`bg-black ${inter.className}`}>
         <Header />
-        <div className="bg-black">{children}</div>
+        <div>{children}</div>
         <Footer />
       </body>
     </html>

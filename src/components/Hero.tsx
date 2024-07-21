@@ -2,12 +2,16 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
+
+import Pricing from "./Pricing";
+import { product_description } from "@/config";
 
 export default function Hero() {
   return (
-    <div className="relative mt-10">
+    <div className="relative mt-12">
       <main>
-        <div className="relative isolate">
+        <div className="relative isolate my-32">
           <motion.div
             className="absolute inset-0 z-0"
             initial={{ opacity: 0 }}
@@ -105,33 +109,33 @@ export default function Hero() {
                   transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
                 >
                   <motion.span
-                    className="text-8xl bg-gradient-to-r from-cyan-600 to-cyan-400 text-transparent bg-clip-text"
+                    className="text-7xl bg-gradient-to-r from-cyan-600 to-cyan-400 text-transparent bg-clip-text whitespace-nowrap"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{
                       duration: 0.6,
                       delay: 0.4,
-                      ease: "easeOut",
+                      ease: "easeInOut",
                     }}
                   >
-                    {Array.from("Elevate").map((char, index) => (
+                    {Array.from("Simulate Complexity,").map((char, index) => (
                       <motion.span
                         key={char + "-" + index}
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{
-                          duration: 0.3,
+                          duration: 0.6,
                           delay: index * 0.1 + 0.4,
-                          ease: "easeOut",
+                          ease: "easeInOut",
                         }}
                       >
                         {char}
                       </motion.span>
                     ))}
                   </motion.span>
-                  <span className="text-8xl text-gray-200">
-                    {" "}
-                    Your Sales Team's Performance
+                  <br />
+                  <span className="text-7xl text-gray-200">
+                    Master Reality
                   </span>
                   <motion.span
                     className="text-8xl bg-gradient-to-r from-cyan-600 to-cyan-400 text-transparent bg-clip-text"
@@ -152,9 +156,7 @@ export default function Hero() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
                 >
-                  EngageLabs is an advanced AI system designed to train
-                  salespeople by simulating customer calls with customizable
-                  personas and qualities.
+                  {product_description}
                 </motion.p>
                 <motion.div
                   className="mt-10 flex items-center gap-x-6"
@@ -162,18 +164,18 @@ export default function Hero() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 1, ease: "easeOut" }}
                 >
-                  <a
+                  <Link
                     href="/playground"
                     className="rounded-md bg-gradient-to-r from-cyan-600 to-blue-400 px-3.5 py-2.5 text-sm font-semibold text-gray-100 shadow-sm shadow-cyan-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600"
                   >
-                    Try For Free
-                  </a>
-                  <a
+                    Try for Free
+                  </Link>
+                  <Link
                     href="/contact-us"
                     className="relative inline-block rounded-md px-3.5 py-2.5 text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 border-2 border-cyan-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-400 hover:text-white hover:shadow-[0_0_50px_10px_rgba(85,152,191,0.5)] transition-all duration-500"
                   >
                     Book a demo
-                  </a>
+                  </Link>
                 </motion.div>
               </div>
               <motion.div
@@ -187,11 +189,12 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 1.4, ease: "easeOut" }}
-                ></motion.div>
+                />
               </motion.div>
             </motion.div>
           </div>
         </div>
+        <Pricing />
       </main>
     </div>
   );
