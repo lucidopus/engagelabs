@@ -40,7 +40,7 @@
 //       console.error("Error fetching data:", error);
 //       <Notification
 //         title="Oops! We couldn't initialize your session!"
-//         description="There was an issue while initializing your conversation session> Please try again later!"
+//         description="There was an issue while initializing your conversation session, Please try again later!"
 //         type="Error"
 //       />;
 //     }
@@ -49,74 +49,74 @@
 //   const [files, setFiles] = useState<any>([]);
 //   const inputRef = useRef<any>(null);
 
-  // function analyzeCall(mp3: any) {
-  //   console.log("Make an API call with this mp3", mp3);
-  // }
+//   function analyzeCall(mp3: any) {
+//     console.log("Make an API call with this mp3", mp3);
+//   }
 
-  // function handleChange(e: any) {
-  //   e.preventDefault();
-  //   console.log("File has been added");
-  //   if (e.target.files && e.target.files[0]) {
-  //     setFiles([e.target.files[0]]);
-  //   }
-  // }
+//   function handleChange(e: any) {
+//     e.preventDefault();
+//     console.log("File has been added");
+//     if (e.target.files && e.target.files[0]) {
+//       setFiles([e.target.files[0]]);
+//     }
+//   }
 
-  // function handleSubmitFile(e: any) {
-  //   if (files.length === 0) {
-  //     console.log("No file selected!");
-  //   } else {
-  //     analyzeCall(files[0]);
-  //   }
-  // }
+//   function handleSubmitFile(e: any) {
+//     if (files.length === 0) {
+//       console.log("No file selected!");
+//     } else {
+//       analyzeCall(files[0]);
+//     }
+//   }
 
-  // function handleDrop(e: any) {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   setDragActive(false);
-  //   if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-  //     setFiles([e.dataTransfer.files[0]]);
-  //   }
-  // }
+//   function handleDrop(e: any) {
+//     e.preventDefault();
+//     e.stopPropagation();
+//     setDragActive(false);
+//     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+//       setFiles([e.dataTransfer.files[0]]);
+//     }
+//   }
 
-  // function handleDragLeave(e: any) {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   setDragActive(false);
-  // }
+//   function handleDragLeave(e: any) {
+//     e.preventDefault();
+//     e.stopPropagation();
+//     setDragActive(false);
+//   }
 
-  // function handleDragOver(e: any) {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   setDragActive(true);
-  // }
+//   function handleDragOver(e: any) {
+//     e.preventDefault();
+//     e.stopPropagation();
+//     setDragActive(true);
+//   }
 
-  // function handleDragEnter(e: any) {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   setDragActive(true);
-  // }
+//   function handleDragEnter(e: any) {
+//     e.preventDefault();
+//     e.stopPropagation();
+//     setDragActive(true);
+//   }
 
-  // function removeFile(fileName: any, idx: any) {
-  //   const newArr = [...files];
-  //   newArr.splice(idx, 1);
-  //   setFiles([]);
-  //   setFiles(newArr);
-  // }
+//   function removeFile(fileName: any, idx: any) {
+//     const newArr = [...files];
+//     newArr.splice(idx, 1);
+//     setFiles([]);
+//     setFiles(newArr);
+//   }
 
-  // function openFileExplorer() {
-  //   inputRef.current.value = "";
-  //   inputRef.current.click();
-  // }
+//   function openFileExplorer() {
+//     inputRef.current.value = "";
+//     inputRef.current.click();
+//   }
 
-  // const handleClick = () => {
-  //   getData();
-  // };
+//   const handleClick = () => {
+//     getData();
+//   };
 
-  // const handleReinitialize = () => {
-  //   setData(null);
-  //   setPersona("");
-  //   setQualities("");
-  // };
+//   const handleReinitialize = () => {
+//     setData(null);
+//     setPersona("");
+//     setQualities("");
+//   };
 
 //   return (
 //     <div className="flex flex-col items-center justify-center min-h-screen">

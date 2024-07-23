@@ -10,7 +10,6 @@ export const product_description = "EngageLabs is the ultimate AI-driven trainin
 export const footer_description =
   'Master conversations with AI-powered customer simulations.';
 
-
 export const COMPANY_URL = "https://superagent.me";
 export const COMPANY_ADDRESS_LINE_1 = "123 Example Street";
 export const COMPANY_ADDRESS_LINE_2 = "Example City, EX 12345";
@@ -38,7 +37,7 @@ export const pricing = {
       description: "Dedicated support and infrastructure for your company.",
       features: [
         "API Access",
-        "5 free conversations",
+        " Upto 5 free conversations",
       ],
       mostPopular: false,
     },

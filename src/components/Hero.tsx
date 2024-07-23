@@ -3,7 +3,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-
 import Pricing from "./Pricing";
 import { product_description } from "@/config";
 
@@ -118,7 +117,7 @@ export default function Hero() {
                       ease: "easeInOut",
                     }}
                   >
-                    {Array.from("Simulate Complexity,").map((char, index) => (
+                    {Array.from("Elevate").map((char, index) => (
                       <motion.span
                         key={char + "-" + index}
                         initial={{ opacity: 0, y: 50 }}
@@ -135,7 +134,7 @@ export default function Hero() {
                   </motion.span>
                   <br />
                   <span className="text-7xl text-gray-200">
-                    Master Reality
+                    Your Team's Performance with AI-driven customer simulations
                   </span>
                   <motion.span
                     className="text-8xl bg-gradient-to-r from-cyan-600 to-cyan-400 text-transparent bg-clip-text"
