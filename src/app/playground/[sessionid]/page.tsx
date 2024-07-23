@@ -21,8 +21,8 @@ export default function SessionDetail({
   const initialState = {
     sender: "",
     response: "",
-    id: params.sessionid,
     audioData: "",
+    id: params.sessionid,
   }
 
   const [state, formAction] = useFormState(transcript, initialState);

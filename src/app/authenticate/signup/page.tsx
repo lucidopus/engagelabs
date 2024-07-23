@@ -1,7 +1,26 @@
+"use client";
+
 import { Input } from "@/components";
 import { Button } from "@/components";
+import { useState } from "react";
 
 function Signup() {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordsMatch, setPasswordsMatch] = useState(true);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      setPasswordsMatch(false);
+    } else {
+      setPasswordsMatch(true);
+      alert("Signup successful!");
+    }
+  }
+
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -16,27 +35,37 @@ function Signup() {
 
         <div className="sm:mx-auto sm:w-full sm:max-w-[480px]">
           <div className="border border-gray-400 dark:border-gray-400 px-6 py-12 shadow sm:rounded-lg sm:px-12">
-            <form className="space-y-6" action="#" method="POST">
+            <form className="space-y-6" onSubmit={handleSubmit}  method="POST">
               <Input
                 id="email"
                 label="Email address*"
                 placeholder="johndoe@example.com"
                 type="email"
+                value={email}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
               />
 
               <Input
-                id="password"
-                label="Password*"
-                type="password"
-                placeholder="Enter a password"
-              />
+                  id="password"
+                  label="Password*"
+                  type="password"
+                  placeholder="Enter a password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
 
-              <Input
-                id="password"
-                label="Confirm Password*"
-                type="password"
-                placeholder="Confirm your password"
-              />
+                <Input
+                  id="confirmPassword"
+                  label="Confirm Password*"
+                  type="password"
+                  placeholder="Confirm your password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+
+                {!passwordsMatch && (
+                  <p className="text-orange-500 text-sm">Passwords do not match!</p>
+                )}
 
               <div>
                 <Button width="w-full" name="Sign up" />

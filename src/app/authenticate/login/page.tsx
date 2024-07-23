@@ -1,6 +1,24 @@
-import { Input, Button } from "@/components";
+"use client"
+
+import React, { useState } from "react";
+import { Input } from "@/components";
+import { Button } from "@/components/Button";
 
 function Login() {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    showSubmissionAlert();
+  }
+
+  const showSubmissionAlert = () => {
+    alert("Login successful!");
+  };
+
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8 bg-black">
@@ -15,12 +33,14 @@ function Login() {
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
           <div className="border border-cyan-300 dark:border-gray-500 px-6 py-12 shadow sm:rounded-lg sm:px-12">
-            <form className="space-y-6" action="#" method="POST">
+            <form className="space-y-6" onSubmit={handleSubmit} method="POST">
               <Input
                 id="email"
                 label="Email address*"
                 placeholder="johndoe@example.com"
                 type="email"
+                value={email}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
               />
 
               <Input
@@ -28,22 +48,26 @@ function Login() {
                 label="Password*"
                 type="password"
                 placeholder="Enter your password"
+                value={password}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
               />
 
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <input
-                    id="remember-me"
-                    name="remember-me"
-                    type="checkbox"
-                    className="h-4 w-4 rounded border-cyan-300 text-blue-600 focus:ring-red-600"
-                  />
-                  <label
-                    htmlFor="remember-me"
-                    className="ml-3 block text-sm leading-6 text-gray-100"
-                  >
-                    Remember me
-                  </label>
+                      id="remember-me"
+                      name="remember-me"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-cyan-300 text-blue-600 focus:ring-red-600"
+                      checked={rememberMe}
+                      onChange={(e) => setRememberMe(e.target.checked)}
+                    />
+                    <label
+                      htmlFor="remember-me"
+                      className="ml-3 block text-sm leading-6 text-gray-100"
+                    >
+                      Remember me
+                    </label>
                 </div>
 
                 <div className="text-sm leading-6">
