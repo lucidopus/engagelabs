@@ -73,20 +73,24 @@ export const pricing = {
   ],
 };
 
+export const storageBucket = process.env.storageBucket
+
 export const firebase_credentials = {
-  type: process.env.type,
-  project_id: process.env.project_id,
-  private_key_id: process.env.private_key_id,
-  private_key: process.env.private_key,
-  client_email: process.env.client_email,
-  client_id: process.env.client_id,
-  auth_uri: process.env.auth_uri,
-  token_uri: process.env.token_uri,
-  auth_provider_x509_cert_url: process.env.auth_provider_x509_cert_url,
-  client_x509_cert_url: process.env.client_x509_cert_url,
-  universe_domain: process.env.universe_domain,
-  storageBucket: process.env.storageBucket,
-  databaseURL: process.env.databaseURL,
+  type: process.env.NEXT_PUBLIC_type,
+  project_id: process.env.NEXT_PUBLIC_project_id,
+  private_key_id: process.env.NEXT_PUBLIC_private_key_id,
+  private_key: process.env.NEXT_PUBLIC_private_key,
+  client_email: process.env.NEXT_PUBLIC_client_email,
+  client_id: process.env.NEXT_PUBLIC_client_id,
+  auth_uri: process.env.NEXT_PUBLIC_auth_uri,
+  token_uri: process.env.NEXT_PUBLIC_token_uri,
+  auth_provider_x509_cert_url: process.env.NEXT_PUBLIC_auth_provider_x509_cert_url,
+  client_x509_cert_url: process.env.NEXT_PUBLIC_client_x509_cert_url,
+  universe_domain: process.env.NEXT_PUBLIC_universe_domain,
+  storageBucket: process.env.NEXT_PUBLIC_storageBucket,
+  databaseURL: process.env.NEXT_PUBLIC_databaseURL,
 }
+
+
 export const STT_MODEL = "whisper-large-v3"
 export const PROSPECT_MESSAGE_ENDPOINT = "/model/generate"

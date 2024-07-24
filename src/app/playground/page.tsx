@@ -8,7 +8,7 @@ import { faInfoCircle, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage"
 import { initializeApp } from "firebase/app"
 
-import { ENGAGELABS_API_BASE, ENGAGELABS_API_KEY, firebase_credentials } from "@/config";
+import { ENGAGELABS_API_BASE, ENGAGELABS_API_KEY, firebase_credentials, storageBucket } from "@/config";
 import { Button } from "@/components";
 import Notification from "@/components/Notification";
 
@@ -28,7 +28,8 @@ function Playground() {
       let fileURL = ""
 
       if (files.length > 0) {
-        const storage = getStorage(app)
+
+        const storage = getStorage(app, storageBucket)
         const fileRef = ref(storage, `images/${files[0].name}`);
 
         await uploadBytes(fileRef, files[0]);
@@ -53,8 +54,6 @@ function Playground() {
       );
 
       const data = await response.json();
-
-      console.log(data);
       setData(data);
     } catch (error) {
       console.error("Error fetching data:", error);
