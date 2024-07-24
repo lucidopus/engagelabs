@@ -3,17 +3,27 @@
 import Groq from "groq-sdk";
 import axios from "axios";
 import { STT_MODEL, PROSPECT_MESSAGE_ENDPOINT } from "@/config";
+import { ElevenLabsClient } from "elevenlabs";
+import { buffer } from "stream/consumers";
 
 const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY,
 });
 
-const API_BASE = process.env.DEEPGRAM_API_BASE || '';
-const API_KEY = process.env.DEEPGRAM_API_KEY || '';
+const elevenlabs = new ElevenLabsClient();
 
+async function convertStreamToBase64(
+  readableStream: NodeJS.ReadableStream
+): Promise<string> {
+  const bufferData = await buffer(readableStream);
+  return bufferData.toString("base64");
+}
 async function transcript(prevState: any, formData: FormData) {
   const file = formData.get("audio") as File;
-  const url = process.env.NEXT_PUBLIC_ENGAGELABS_API_BASE?.concat(PROSPECT_MESSAGE_ENDPOINT) || "";
+  const url =
+    process.env.NEXT_PUBLIC_ENGAGELABS_API_BASE?.concat(
+      PROSPECT_MESSAGE_ENDPOINT
+    ) || "";
   const api_key = process.env.NEXT_PUBLIC_ENGAGELABS_API_KEY || "";
 
   if (url === "" || api_key === "") {
@@ -37,7 +47,7 @@ async function transcript(prevState: any, formData: FormData) {
       prompt: "",
       response_format: "json",
       temperature: 0,
-    });    
+    });
 
     const data = {
       session_id: prevState.id,
@@ -46,32 +56,26 @@ async function transcript(prevState: any, formData: FormData) {
 
     const prospect_message = await axios.post(url, data, {
       headers: {
-        "accept": "application/json",
+        accept: "application/json",
         "X-API-Key": api_key,
         "Content-Type": "application/json",
       },
-    });  
+    });
 
-    const ttsResponse = await axios.post(
-      API_BASE,
-      { text: prospect_message.data.response },
-      {
-        headers: {
-          'Authorization': `Token ${API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        responseType: 'arraybuffer',
-      }
-    );
+    const readableStream = await elevenlabs.generate({
+      text: prospect_message.data.response,
+      voice: "Rachel",
+      model_id: "eleven_turbo_v2",
+      stream: true,
+    });
 
-    const audioBuffer = Buffer.from(ttsResponse.data);
-    const audioBase64 = audioBuffer.toString('base64');
+    const base64String = await convertStreamToBase64(readableStream);
 
     return {
       sender: speechResult.text,
       response: prospect_message.data.response,
       id: prevState.id,
-      audioData: audioBase64,
+      audioData: base64String,
     };
   } catch (error) {
     console.error("Error running the pipeline: ", error);
