@@ -73,5 +73,22 @@ export const pricing = {
   ],
 };
 
+export const firebase_credentials = {
+  type: process.env.type,
+  project_id: process.env.project_id,
+  private_key_id: process.env.private_key_id,
+  private_key: process.env.private_key,
+  client_email: process.env.client_email,
+  client_id: process.env.client_id,
+  auth_uri: process.env.auth_uri,
+  token_uri: process.env.token_uri,
+  auth_provider_x509_cert_url: process.env.auth_provider_x509_cert_url,
+  client_x509_cert_url: process.env.client_x509_cert_url,
+  universe_domain: process.env.universe_domain,
+  // storageBucket: process.env.storageBucket,
+  // databaseURL: process.env.databaseURL,
+  databaseURL: "https://engagelabs-c254b-default-rtdb.firebaseio.com/",
+  storageBucket: "engagelabs-c254b.appspot.com"
+}
 export const STT_MODEL = "whisper-large-v3"
 export const PROSPECT_MESSAGE_ENDPOINT = "/model/generate"
