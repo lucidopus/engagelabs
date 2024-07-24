@@ -85,10 +85,8 @@ export const firebase_credentials = {
   auth_provider_x509_cert_url: process.env.auth_provider_x509_cert_url,
   client_x509_cert_url: process.env.client_x509_cert_url,
   universe_domain: process.env.universe_domain,
-  // storageBucket: process.env.storageBucket,
-  // databaseURL: process.env.databaseURL,
-  databaseURL: "https://engagelabs-c254b-default-rtdb.firebaseio.com/",
-  storageBucket: "engagelabs-c254b.appspot.com"
+  storageBucket: process.env.storageBucket,
+  databaseURL: process.env.databaseURL,
 }
 export const STT_MODEL = "whisper-large-v3"
 export const PROSPECT_MESSAGE_ENDPOINT = "/model/generate"
