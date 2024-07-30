@@ -86,7 +86,6 @@ export const firebase_credentials = {
   measurementId: process.env.measurementId,
 }
 
-
 export const STT_MODEL = "whisper-large-v3"
 export const PROSPECT_MESSAGE_ENDPOINT = "/model/generate"
 export const HISTORY_ENDPOINT = "/get_history"

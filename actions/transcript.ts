@@ -52,9 +52,11 @@ async function transcript(prevState: any, formData: FormData) {
       },
     });
 
+    const processed_prospect_message = prospect_message.data.response.replace("Emily:", "")
+
     const ttsResponse = await axios.post(
       API_BASE,
-      { text: prospect_message.data.response },
+      { text: processed_prospect_message },
       {
         headers: {
           'Authorization': `Token ${API_KEY}`,
@@ -69,7 +71,7 @@ async function transcript(prevState: any, formData: FormData) {
 
     return {
       sender: speechResult.text,
-      response: prospect_message.data.response,
+      response: processed_prospect_message,
       id: prevState.id,
       end_after_utterence: prospect_message.data.end_after_utterence,
       audioData: audioBase64,

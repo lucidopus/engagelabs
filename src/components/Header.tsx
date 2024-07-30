@@ -31,7 +31,7 @@ export async function Header() {
             <Image src={"/logo.svg"} width={50} height={50} alt="Logo" />
             <span className="p-2 font-sans text-blue-50">{APP_NAME}</span>
           </Link>
-          <div className="hidden items-center space-x-4 md:flex">
+          {/* <div className="hidden items-center space-x-4 md:flex">
             <Link className="font-bold text-white" href="/authenticate/login">
               Log in
             </Link>
@@ -41,7 +41,7 @@ export async function Header() {
             >
               Sign up Free
             </Link>
-          </div>
+          </div> */}
         </div>
       </nav>
     </header>

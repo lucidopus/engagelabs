@@ -1,36 +1,44 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Tooltip } from "@nextui-org/tooltip";
 import { faInfoCircle, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { ENGAGELABS_API_BASE, ENGAGELABS_API_KEY, INITIALIZE_SESSION_ENDPOINT } from "@/config";
+import {
+  ENGAGELABS_API_BASE,
+  ENGAGELABS_API_KEY,
+  INITIALIZE_SESSION_ENDPOINT,
+} from "@/config";
 import { Button } from "@/components";
 import Notification from "@/components/Notification";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+
 
 import { firebase_storage } from "../../../actions/firebase-config";
 
 function Playground() {
   const [persona, setPersona] = useState("");
   const [qualities, setQualities] = useState("");
+  const [apiKey, setApiKey] = useState("");
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [apiKeyMatch, setApiKeyMatch] = useState<boolean>(true);
   const [data, setData] = useState(null);
   const [dragActive, setDragActive] = useState<boolean>(false);
   const [files, setFiles] = useState<any>([]);
   const inputRef = useRef<any>(null);
 
   const getData = async () => {
+    setSuccess(true);
     try {
-
-      let fileURL = ""
+      let fileURL = "";
 
       if (files.length > 0) {
-
         const fileRef = ref(firebase_storage, `images/${files[0].name}`);
 
         await uploadBytes(fileRef, files[0]);
-        
+
         fileURL = await getDownloadURL(fileRef);
       }
 
@@ -40,7 +48,7 @@ function Playground() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "X-API-Key": `${ENGAGELABS_API_KEY}`,
+            "X-API-Key": `${apiKey}`,
           },
           body: JSON.stringify({
             persona: persona,
@@ -48,19 +56,22 @@ function Playground() {
             multimodal_context: fileURL,
           }),
         }
-      );      
+      );
 
       const data = await response.json();
       setData(data);
     } catch (error) {
       console.error("Error fetching data:", error);
-      <Notification
-        title="Oops! We couldn't initialize your session!"
-        description="There was an issue while initializing your conversation session, Please try again later!"
-        type="Error"
-      />;
     }
   };
+
+  useEffect(() => {
+    if (apiKey === "" || apiKey !== ENGAGELABS_API_KEY) {
+      setApiKeyMatch(false);
+    } else {
+      setApiKeyMatch(true);
+    }
+  }, [apiKey]);
 
   function analyzeCall(mp3: any) {
     // console.log("Make an API call with this mp3", mp3);
@@ -122,7 +133,12 @@ function Playground() {
   }
 
   const handleClick = () => {
-    getData();
+    if (apiKeyMatch) {
+      getData();
+      setError(false);
+    } else {
+      setError(true);
+    }
   };
 
   const handleReinitialize = () => {
@@ -133,10 +149,24 @@ function Playground() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
+      {error && (
+        <Notification 
+          title="Invalid API Key"
+          description="Please enter a valid API key!"
+          type="Error"
+        />
+      )}
+      {success && (
+        <Notification 
+          title="Generating Session..."
+          description="Please wait while we're setting things up"
+          type="Success"
+        />
+      )}
       <h1 className="text-center text-4xl pb-8 font-extrabold dark:text-gray-300 text-gray-300">
         EngageLabs API Playground
       </h1>
-      <h2 className="text-center text-xl pb-16 font-bold leading-9 tracking-tight bg-gradient-to-r from-cyan-600 to-blue-600 text-transparent bg-clip-text">
+      <h2 className="text-center text-xl pb-3 font-bold leading-9 tracking-tight bg-gradient-to-r from-cyan-600 to-blue-600 text-transparent bg-clip-text">
         Try it out!
       </h2>
       <motion.div
@@ -146,6 +176,26 @@ function Playground() {
         className="bg-transparent p-10 ring-2 ring-white rounded-lg shadow-md max-w-md w-full"
       >
         <div className="space-y-6">
+          <label
+            className="block text-sm font-medium text-gray-100"
+            htmlFor="help"
+          >
+            API Key
+            <span className="font-light text-gray-200">*</span>
+          </label>
+          <input
+            className={`bg-transparent text-white text-2xl block p-3 w-full rounded-md border-0 py-3 shadow-sm ring-1 ring-inset ring-gray-200 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 ${
+              data !== null ? "cursor-not-allowed" : ""
+            }`}
+            id="key"
+            placeholder="Ex. google-******************"
+            required
+            value={apiKey}
+            onChange={(a) => setApiKey(a.target.value)}
+            disabled={data !== null}
+            type="password"
+          ></input>
+          
           <label
             className="block text-sm font-medium text-gray-100"
             htmlFor="help"
@@ -160,7 +210,6 @@ function Playground() {
             id="help"
             placeholder="Ex. The Price Conscious Buyer"
             rows={1}
-            
             required
             value={persona}
             onChange={(p) => setPersona(p.target.value)}
@@ -186,7 +235,7 @@ function Playground() {
             onChange={(e) => setQualities(e.target.value)}
             disabled={data !== null}
           ></textarea>
-          
+
           <label className="block text-sm font-medium" htmlFor="dragndrop">
             <div className="flex justify-between items-center text-gray-300">
               <span>
@@ -205,7 +254,7 @@ function Playground() {
               </Tooltip>
             </div>
           </label>
-           <form
+          <form
             id="dragndrop"
             className={`${
               dragActive
@@ -291,7 +340,12 @@ function Playground() {
                   >
                     <span className="flex justify-center">
                       <pre className="mt-1 mr-2"> Launch</pre>
-                      <img src="https://firebasestorage.googleapis.com/v0/b/engagelabs-c254b.appspot.com/o/icons%2Fringing.gif?alt=media&token=d20decd2-4582-4bfc-80f0-1304460b4680" alt="" width={35} height={35} />
+                      <img
+                        src="https://firebasestorage.googleapis.com/v0/b/engagelabs-c254b.appspot.com/o/icons%2Fringing.gif?alt=media&token=d20decd2-4582-4bfc-80f0-1304460b4680"
+                        alt=""
+                        width={35}
+                        height={35}
+                      />
                     </span>
                   </button>
                 </div>

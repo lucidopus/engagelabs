@@ -3,7 +3,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Pricing from "./Pricing";
 import { product_description } from "@/config";
 
 export default function Hero() {
@@ -169,12 +168,12 @@ export default function Hero() {
                   >
                     Try for Free
                   </Link>
-                  <Link
+                  {/* <Link
                     href="/contact-us"
                     className="relative inline-block rounded-md px-3.5 py-2.5 text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 border-2 border-cyan-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-400 hover:text-white hover:shadow-[0_0_50px_10px_rgba(85,152,191,0.5)] transition-all duration-500"
                   >
                     Book a demo
-                  </Link>
+                  </Link> */}
                 </motion.div>
               </div>
               <motion.div
@@ -193,7 +192,6 @@ export default function Hero() {
             </motion.div>
           </div>
         </div>
-        <Pricing />
       </main>
     </div>
   );
