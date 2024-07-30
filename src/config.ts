@@ -76,21 +76,18 @@ export const pricing = {
 export const storageBucket = process.env.storageBucket
 
 export const firebase_credentials = {
-  type: process.env.NEXT_PUBLIC_type,
-  project_id: process.env.NEXT_PUBLIC_project_id,
-  private_key_id: process.env.NEXT_PUBLIC_private_key_id,
-  private_key: process.env.NEXT_PUBLIC_private_key,
-  client_email: process.env.NEXT_PUBLIC_client_email,
-  client_id: process.env.NEXT_PUBLIC_client_id,
-  auth_uri: process.env.NEXT_PUBLIC_auth_uri,
-  token_uri: process.env.NEXT_PUBLIC_token_uri,
-  auth_provider_x509_cert_url: process.env.NEXT_PUBLIC_auth_provider_x509_cert_url,
-  client_x509_cert_url: process.env.NEXT_PUBLIC_client_x509_cert_url,
-  universe_domain: process.env.NEXT_PUBLIC_universe_domain,
-  storageBucket: process.env.NEXT_PUBLIC_storageBucket,
-  databaseURL: process.env.NEXT_PUBLIC_databaseURL,
+  apiKey: process.env.apiKey,
+  authDomain: process.env.authDomain,
+  databaseURL: process.env.databaseURL,
+  projectId: process.env.projectId,
+  storageBucket: process.env.storageBucket,
+  messagingSenderId: process.env.messagingSenderId,
+  appId: process.env.appId,
+  measurementId: process.env.measurementId,
 }
 
 
 export const STT_MODEL = "whisper-large-v3"
 export const PROSPECT_MESSAGE_ENDPOINT = "/model/generate"
+export const HISTORY_ENDPOINT = "/get_history"
+export const INITIALIZE_SESSION_ENDPOINT = "/initialize_conversation"

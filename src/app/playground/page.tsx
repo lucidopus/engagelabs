@@ -5,14 +5,12 @@ import { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Tooltip } from "@nextui-org/tooltip";
 import { faInfoCircle, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage"
-import { initializeApp } from "firebase/app"
-
-import { ENGAGELABS_API_BASE, ENGAGELABS_API_KEY, firebase_credentials, storageBucket } from "@/config";
+import { ENGAGELABS_API_BASE, ENGAGELABS_API_KEY, INITIALIZE_SESSION_ENDPOINT } from "@/config";
 import { Button } from "@/components";
 import Notification from "@/components/Notification";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
 
-const app = initializeApp(firebase_credentials)
+import { firebase_storage } from "../../../actions/firebase-config";
 
 function Playground() {
   const [persona, setPersona] = useState("");
@@ -29,8 +27,7 @@ function Playground() {
 
       if (files.length > 0) {
 
-        const storage = getStorage(app, storageBucket)
-        const fileRef = ref(storage, `images/${files[0].name}`);
+        const fileRef = ref(firebase_storage, `images/${files[0].name}`);
 
         await uploadBytes(fileRef, files[0]);
         
@@ -38,7 +35,7 @@ function Playground() {
       }
 
       const response = await fetch(
-        `${ENGAGELABS_API_BASE}/initialize_conversation`,
+        `${ENGAGELABS_API_BASE}`.concat(INITIALIZE_SESSION_ENDPOINT),
         {
           method: "POST",
           headers: {
@@ -51,7 +48,7 @@ function Playground() {
             multimodal_context: fileURL,
           }),
         }
-      );
+      );      
 
       const data = await response.json();
       setData(data);
@@ -66,7 +63,7 @@ function Playground() {
   };
 
   function analyzeCall(mp3: any) {
-    console.log("Make an API call with this mp3", mp3);
+    // console.log("Make an API call with this mp3", mp3);
   }
 
   function handleChange(e: any) {
@@ -278,7 +275,7 @@ function Playground() {
                     <span className="mr-2 flex">
                       Reset <pre> </pre>
                       <img
-                        src="/reset.svg"
+                        src="https://firebasestorage.googleapis.com/v0/b/engagelabs-c254b.appspot.com/o/icons%2Freset.svg?alt=media&token=df46aa3b-dd2a-4780-8a71-dfc67dfa6601"
                         alt=""
                         height={25}
                         width={25}
@@ -294,7 +291,7 @@ function Playground() {
                   >
                     <span className="flex justify-center">
                       <pre className="mt-1 mr-2"> Launch</pre>
-                      <img src="/ringing.gif" alt="" width={35} height={35} />
+                      <img src="https://firebasestorage.googleapis.com/v0/b/engagelabs-c254b.appspot.com/o/icons%2Fringing.gif?alt=media&token=d20decd2-4582-4bfc-80f0-1304460b4680" alt="" width={35} height={35} />
                     </span>
                   </button>
                 </div>

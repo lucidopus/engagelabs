@@ -12,9 +12,9 @@ export const SalespersonChat = ({ message }: { message: string }) => {
           </div>
         </div>
         <img
-          src="/caller.svg"
+          src="https://firebasestorage.googleapis.com/v0/b/engagelabs-c254b.appspot.com/o/icons%2Fprospect.png?alt=media&token=8d293c51-91ba-49a3-a33c-e9696c93f07d"
           alt="My profile"
-          className="w-10 h-10 border border-gray-300 rounded-full order-1"
+          className="w-10 h-10 border border-gray-500 rounded-full order-1"
         />
       </div>
     </div>
