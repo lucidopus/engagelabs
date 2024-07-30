@@ -37,7 +37,7 @@ async function transcript(prevState: any, formData: FormData) {
       prompt: "",
       response_format: "json",
       temperature: 0,
-    });    
+    });
 
     const data = {
       session_id: prevState.id,
@@ -50,7 +50,7 @@ async function transcript(prevState: any, formData: FormData) {
         "X-API-Key": api_key,
         "Content-Type": "application/json",
       },
-    });  
+    });
 
     const ttsResponse = await axios.post(
       API_BASE,
@@ -71,6 +71,7 @@ async function transcript(prevState: any, formData: FormData) {
       sender: speechResult.text,
       response: prospect_message.data.response,
       id: prevState.id,
+      end_after_utterence: prospect_message.data.end_after_utterence,
       audioData: audioBase64,
     };
   } catch (error) {

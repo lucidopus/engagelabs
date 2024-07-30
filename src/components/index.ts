@@ -4,7 +4,6 @@ import { Button } from "./Button";
 import Footer from "./Footer";
 import Pricing from "./Pricing";
 import PricingCard from "./PricingCard";
-import Error from "./ErrorPage";
 import Popup from "./Popup";
 
-export { Hero, Input, Pricing, PricingCard, Button, Error, Popup, Footer };
+export { Hero, Input, Pricing, PricingCard, Button, Popup, Footer };
